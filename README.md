@@ -1,5 +1,4 @@
 <h2> Client-Side JavaScript - Assignment 1</h2>
-<br>
 
 ### Description
 This is an assignment designed to calculate the average grade of a user using client-side JavaScript. The user can input multiple grades, and the program will compute the average based on the entered values.
