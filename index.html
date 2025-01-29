@@ -1,0 +1,99 @@
+<!--Assignment 1 - Client-Side Java Script
+January 25, 2005 - 11:47 AM
+Julia Marques Batista - 200610604-->
+
+<!--
+    Tasks for this assignment:
+1)Ask the user to input the number of the courses that he/she has finished
+2)Loop for x number of times based on the number of courses to let the user input the grade/mark for each course
+3)Find the average of all these courses and display his/her grade
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marks Calculator</title>
+</head>
+<body>
+
+    <script>
+        //Ask the user to enter how many courses did he/she finish using the “prompt()” built-in function
+        //set the deafult value to 0
+        let userInput = prompt("How many courses have you taken?", "0");
+
+        //Declare a new variable using a descriptive name like for exampe “numOfCourses” 
+        // to save the number of courses (which is the value that will be returned from the prompt method based on the user’s input).
+        let numOfCourses = parseInt(userInput);
+
+        //Checking for invalid input - if the input is a not a number or lower than 0
+        if (isNaN(numOfCourses) || numOfCourses <= 0) {
+            document.write("Invalid input. Refresh the page to continue to continue.");
+
+        }else{
+
+          //Declare an empty array variable using any descriptive name for example “courseMarks”. 
+          // This “courseMarks” will be just an empty array object for now, but it will be used to contain the course marks (later).
+            let courseMarks = [];
+
+            //Loop for a specific number of times based on your variable numOfCourses
+            for (counter = 1; counter <= numOfCourses; counter++ ){
+
+                //In each iteration of the loop, you will need to ask the user to enter his/her course mark 
+                let mark = parseFloat(prompt("Enter your mark for course " + counter));  
+
+                //Adding the mark to the array
+                courseMarks.push(mark);
+               
+            }
+
+            //Display all the course marks that is saved into the “courseMarks” array using any kind o loop
+            document.write("<h3>Course Marks</h3>");
+
+            document.write("<ul>");
+                for (let i = 0; i < courseMarks.length; i++){
+                    document.write("<li> Course " + (i + 1) + ": " + courseMarks[i] + "</li>");
+
+                }
+            document.write("</ul>");
+
+           
+            //Find the total of all the courses marks inside the array
+            let totalMarks = 0;//this will store the total, initial value of 0
+
+            for (let i = 0; i < courseMarks.length; i++){
+                totalMarks += courseMarks[i];
+            }
+
+            //Find the average (the mean) for all the courses
+            let average = totalMarks / courseMarks.length;
+
+            //Use document.write() to output the average value plus the grade, so you will use “if condition” to check the average value
+            if (average >= 90 && average <= 100){
+                document.write("<p> Your average is " +average.toFixed(2) + ". Your grade is A+.</p>");
+
+            }else if (average >= 80 && average < 90){
+                document.write("<p> Your average is " +average.toFixed(2) + ". Your grade is B.</p>");
+                
+            }else if (average >= 70 && average < 80){
+                document.write("<p> Your average is " +average.toFixed(2) + ". Your grade is C.</p>");
+
+            }else if (average >=60 && average < 70) {
+                document.write("<p> Your average is " +average.toFixed(2) + ". Your grade is D.</p>");
+
+            }else if (average < 60){
+                document.write("<p> Your average is " +average.toFixed(2) + ". Your grade is F.</p>");
+
+            }else{
+                document.write("<p>Sorry, all the marks have to be from minimum 0 to maximum 100!</p>");
+            }
+
+        }
+        
+        
+    </script>
+    
+    
+</body>
+</html>
